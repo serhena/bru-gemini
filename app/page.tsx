@@ -110,21 +110,46 @@ export default function LandingPage() {
             </div>
           </motion.div>
 
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="relative aspect-[2/3] rounded-3xl overflow-hidden border border-white/10"
-          >
-            <Image 
-              src="https://picsum.photos/seed/adelaide-tennis-pro/1000/1500" 
-              alt="Bruno at Adelaide International"
-              fill
-              className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent" />
-          </motion.div>
+          <div className="relative group">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="relative aspect-[4/5] overflow-hidden"
+              style={{
+                maskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent), linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+                WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent), linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+                maskComposite: 'intersect',
+                WebkitMaskComposite: 'source-in'
+              }}
+            >
+              <Image 
+                src="/bruno-adelaide.jpg" 
+                alt="Bruno at Adelaide International"
+                fill
+                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                referrerPolicy="no-referrer"
+              />
+            </motion.div>
+
+            {/* Handwriting Arrow & Text */}
+            <motion.div 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2, duration: 0.8 }}
+              className="absolute top-[5%] left-[32%] z-20 pointer-events-none hidden lg:block"
+            >
+              <div className="relative flex flex-col items-center text-[#C8F135] group-hover:text-white transition-all duration-700 group-hover:scale-110 group-hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]">
+                <span className="font-handwriting text-8xl rotate-[-8deg] whitespace-nowrap">
+                  Bruno
+                </span>
+                <svg width="100" height="100" viewBox="0 0 100 100" fill="none" className="-mt-4">
+                  <path d="M50 10 Q 45 45, 55 80" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+                  <path d="M40 65 L 55 80 L 70 65" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+            </motion.div>
+          </div>
         </div>
 
         {/* Stats Bar */}

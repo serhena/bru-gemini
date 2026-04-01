@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Space_Grotesk } from 'next/font/google';
+import { Inter, Space_Grotesk, Caveat } from 'next/font/google';
 import './globals.css';
 
 const inter = Inter({
@@ -10,6 +10,11 @@ const inter = Inter({
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--font-display',
+});
+
+const caveat = Caveat({
+  subsets: ['latin'],
+  variable: '--font-handwriting',
 });
 
 export const metadata: Metadata = {
@@ -23,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${caveat.variable}`}>
       <body className="bg-[#0a0a0a] text-white antialiased" suppressHydrationWarning>
         {children}
       </body>
