@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Clock, ChevronRight, Instagram, Mail, Zap, Target, Trophy, ArrowRight, CheckCircle2, Plus, Minus } from 'lucide-react';
+import { Clock, ChevronRight, Instagram, Mail, Zap, Target, Trophy, ArrowRight, CheckCircle2, Plus, Minus, Share2 } from 'lucide-react';
 import Image from 'next/image';
 
 const faqs = [
@@ -405,18 +405,71 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* CTA Section */}
+      <section className="bg-[#C8F135] py-20">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-12">
+          <div className="text-[#0a0a0a]">
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter font-display mb-4">
+              Ready to restring? It takes 2 minutes.
+            </h2>
+            <p className="text-xl font-medium opacity-80">
+              Take the quiz and I will send you a personalized string recommendation.
+            </p>
+          </div>
+          <a 
+            href="#booking-form"
+            className="bg-[#0a0a0a] text-white px-10 py-5 rounded-2xl font-bold flex items-center gap-3 hover:scale-105 transition-transform shadow-2xl whitespace-nowrap"
+          >
+            Get Restrung <ArrowRight size={24} />
+          </a>
+        </div>
+      </section>
+
       {/* Footer */}
-      <footer className="py-12 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="text-xl font-bold tracking-tighter font-display">
-            BRUNO<span className="text-[#C8F135]">RESTRINGS</span>
+      <footer className="bg-[#0a0a0a] pt-24 pb-12 border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-16 mb-24">
+          {/* Brand Section */}
+          <div className="space-y-8">
+            <div className="text-3xl font-bold tracking-tighter font-display text-[#C8F135]">
+              Bruno Restrings
+            </div>
+            <p className="text-white/60 leading-relaxed max-w-sm">
+              Premium tennis restringing service based in Adelaide. Expert advice and professional quality for every player.
+            </p>
           </div>
-          <div className="text-sm text-white/30">
-            © 2026 Bruno Restrings. Adelaide, SA.
+
+          {/* Quick Links Section */}
+          <div className="space-y-8">
+            <h4 className="text-sm font-bold tracking-widest text-white uppercase">QUICK LINKS</h4>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="flex flex-col gap-4">
+                <a href="#" className="text-white/60 hover:text-[#C8F135] transition-colors">Home</a>
+                <a href="#booking-form" className="text-white/60 hover:text-[#C8F135] transition-colors">Get Restrung</a>
+                <a href="#faq" className="text-white/60 hover:text-[#C8F135] transition-colors">FAQ</a>
+              </div>
+            </div>
           </div>
-          <div className="flex gap-6">
-            <a href="https://instagram.com/brunorestrings" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-white transition-colors"><Instagram size={20} /></a>
-            <a href="mailto:hello@brunorestrings.au" className="text-white/50 hover:text-white transition-colors"><Mail size={20} /></a>
+
+          {/* Contact Section */}
+          <div className="space-y-8">
+            <h4 className="text-sm font-bold tracking-widest text-white uppercase">CONTACT</h4>
+            <div className="space-y-4">
+              <p className="text-white/60">0450 700 794</p>
+              <a href="mailto:hello@brunorestrings.au" className="text-white/60 hover:text-[#C8F135] transition-colors block">
+                hello@brunorestrings.au
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="max-w-7xl mx-auto px-6 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="text-sm text-white/40">
+            © 2025 Bruno Restrings · All prices include string + labour.
+          </div>
+          <div className="flex gap-8 text-sm text-white/20">
+            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
           </div>
         </div>
       </footer>
