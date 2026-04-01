@@ -71,16 +71,16 @@ const services = [
 
 const steps = [
   {
-    title: 'Drop Off',
-    description: 'Bring your racquet to our Adelaide workshop.',
+    title: 'Fill the Form',
+    description: 'Tell me about your playstyle, previous strings, and any arm issues for a tailored recommendation.',
   },
   {
-    title: 'Restring',
-    description: 'Precision stringing using electronic constant-pull machines.',
+    title: 'Drop Off your racket',
+    description: 'Convenient location and hours for drop-off. Most racquets are finished within 24-48h.',
   },
   {
-    title: 'Pick Up',
-    description: 'Ready within 24 hours. Dominate the court again.',
+    title: 'Pick Up, Ready to Play',
+    description: "Get notified via SMS once it's ready. Payment is seamless and you're back on court.",
   },
 ];
 
@@ -261,7 +261,9 @@ export default function LandingPage() {
       {/* How it Works */}
       <section className="py-32 border-y border-white/5">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-center text-4xl md:text-6xl font-bold tracking-tighter font-display mb-20 uppercase">THE PROCESS</h2>
+          <h2 className="text-center text-4xl md:text-6xl font-bold tracking-tighter font-display mb-20 uppercase">
+            Getting restrung is <span className="text-[#C8F135]">easy.</span>
+          </h2>
           <div className="grid md:grid-cols-3 gap-12 relative">
             {/* Connector Line */}
             <div className="hidden md:block absolute top-1/2 left-0 w-full h-[1px] bg-white/10 -z-10" />
