@@ -1,0 +1,58 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: bookings
+    // Document ID: auto-generated
+    // Fields:
+    //   - name: string (required, 1-100 chars)
+    //   - email: string (required, valid email)
+    //   - stringType: string (required, enum)
+    //   - tension: number (required, 10-80)
+    //   - message: string (optional, 0-1000 chars)
+    //   - status: string (required, default 'pending')
+    //   - createdAt: timestamp (required)
+    //
+    // ===============================================================
+
+    // Helper Functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && 
+        (request.auth.token.email == "henacosta@gmail.com" && request.auth.token.email_verified == true);
+    }
+
+    function isValidEmail(email) {
+      return email is string && email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+    }
+
+    function isValidBooking(data) {
+      return data.keys().hasAll(['name', 'email', 'stringType', 'tension', 'status', 'createdAt']) &&
+             data.name is string && data.name.size() > 0 && data.name.size() <= 100 &&
+             isValidEmail(data.email) &&
+             data.stringType in ['Polyester', 'Synthetic Gut', 'Multifilament', 'Hybrid'] &&
+             data.tension is number && data.tension >= 10 && data.tension <= 80 &&
+             data.status in ['pending', 'confirmed', 'completed'] &&
+             data.createdAt is timestamp;
+    }
+
+    match /bookings/{bookingId} {
+      // Anyone can create a booking (public form)
+      allow create: if isValidBooking(request.resource.data) && 
+                      request.resource.data.status == 'pending';
+      
+      // Only admin can read/update/delete bookings
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /{path=**} {
+      allow read, write: if false;
+    }
+  }
+}
