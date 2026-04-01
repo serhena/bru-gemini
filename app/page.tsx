@@ -97,7 +97,8 @@ export default function LandingPage() {
           </div>
           <div className="hidden md:flex gap-8 text-sm uppercase tracking-widest font-medium opacity-70">
             <a href="#services" className="hover:text-[#C8F135] transition-colors">Services</a>
-            <a href="https://wa.link/4wv5w0" target="_blank" rel="noopener noreferrer" className="hover:text-[#C8F135] transition-colors">Whatsapp Me</a>
+            <a href="#booking-form" className="hover:text-[#C8F135] transition-colors">find out my string</a>
+            <a href="#faq" className="hover:text-[#C8F135] transition-colors">FAQ</a>
           </div>
           <div className="flex items-center gap-4">
             <a 
@@ -349,7 +350,7 @@ export default function LandingPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-32 border-t border-white/5">
+      <section id="faq" className="py-32 border-t border-white/5">
         <div className="max-w-3xl mx-auto px-6">
           <h2 className="text-4xl md:text-6xl font-bold tracking-tighter font-display mb-16 uppercase text-center">FAQ</h2>
           <div className="space-y-4">
@@ -414,8 +415,8 @@ export default function LandingPage() {
             © 2026 Bruno Restrings. Adelaide, SA.
           </div>
           <div className="flex gap-6">
-            <a href="#" className="text-white/50 hover:text-white transition-colors"><Instagram size={20} /></a>
-            <a href="#" className="text-white/50 hover:text-white transition-colors"><Mail size={20} /></a>
+            <a href="https://instagram.com/brunorestrings" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-white transition-colors"><Instagram size={20} /></a>
+            <a href="mailto:hello@brunorestrings.au" className="text-white/50 hover:text-white transition-colors"><Mail size={20} /></a>
           </div>
         </div>
       </footer>
