@@ -52,14 +52,21 @@ export default function LandingPage() {
           </div>
           <div className="hidden md:flex gap-8 text-sm uppercase tracking-widest font-medium opacity-70">
             <a href="#services" className="hover:text-[#C8F135] transition-colors">Services</a>
-            <a href="#booking-form" className="hover:text-[#C8F135] transition-colors">Book Now</a>
+            <a href="https://wa.link/4wv5w0" target="_blank" rel="noopener noreferrer" className="hover:text-[#C8F135] transition-colors">Whatsapp Me</a>
           </div>
-          <a 
-            href="#booking-form" 
-            className="bg-[#C8F135] text-black px-6 py-2 rounded-full text-sm font-bold hover:scale-105 transition-transform"
-          >
-            BOOK NOW
-          </a>
+          <div className="flex items-center gap-4">
+            <span className="hidden md:inline text-white text-sm font-medium">
+              +61 0450 700 794 or
+            </span>
+            <a 
+              href="https://wa.link/4wv5w0" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#C8F135] text-black px-6 py-2 rounded-full text-sm font-bold hover:scale-105 transition-transform"
+            >
+              WHATSAPP ME
+            </a>
+          </div>
         </div>
       </nav>
 
