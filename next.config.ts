@@ -19,9 +19,8 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Output standalone is used for production builds, but can sometimes cause issues in dev.
-  // Removing it to see if it resolves the PageNotFoundError.
-  // output: 'standalone',
+  // Output standalone is used for production builds.
+  output: 'standalone',
   transpilePackages: ['motion'],
   webpack: (config, {dev}) => {
     // HMR is disabled in AI Studio via DISABLE_HMR env var.

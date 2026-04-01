@@ -1,9 +1,52 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'motion/react';
-import { Clock, ChevronRight, Instagram, Mail, Zap, Target, Trophy, ArrowRight, CheckCircle2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Clock, ChevronRight, Instagram, Mail, Zap, Target, Trophy, ArrowRight, CheckCircle2, Plus, Minus } from 'lucide-react';
 import Image from 'next/image';
+
+const faqs = [
+  {
+    question: "How often should I restring my racquet?",
+    answer: "A good rule of thumb: restring as many times per year as you play per week. So if you play 3 times a week, aim for 3 restrings a year. Competitive players or those with big swings may need more frequent restringing, as strings lose tension and elasticity over time even without breaking."
+  },
+  {
+    question: "How much does the service cost?",
+    answer: "Our standard labour fee is $20. Full packages (labour + string) start from $35 and go up to $50 for premium setups. Not sure what you need? Message me on WhatsApp and we'll help you find the best option for your budget and game."
+  },
+  {
+    question: "Where can I drop off my racquet?",
+    answer: "Drop-offs are at Greenacres, message me on WhatsApp for full address. It's quick and easy — no appointments needed during drop-off hours."
+  },
+  {
+    question: "What is the turnaround time?",
+    answer: "Most racquets are ready within 24–48 hours. We'll let you know as soon as yours is done and ready for collection."
+  },
+  {
+    question: "Can you help me choose the right string?",
+    answer: "Absolutely. Just tell us your playing style, level, and budget and we'll recommend the best string for you. Whether you're after more power, control, comfort, or durability, we've got you covered."
+  },
+  {
+    question: "Can I bring my own strings?",
+    answer: "Yes! If you already have a string you love, just bring it along and we'll string it for the $20 labour fee. We're happy to work with whatever you bring."
+  },
+  {
+    question: "What tension should I use?",
+    answer: "It depends on your playing style and racquet. As a general guide: lower tensions (48–54 lbs) give more power and comfort, while higher tensions (55–62 lbs) offer more control. We recommend staying within the range printed on your racquet frame, and we're happy to advise based on how you play."
+  },
+  {
+    question: "Do you offer home delivery?",
+    answer: "Yes, for a fee we can arrange home delivery. Message me on WhatsApp to discuss."
+  },
+  {
+    question: "What happens if a string breaks early?",
+    answer: "Strings can break due to mishits, off-centre hits, or an aggressive playing style — this is normal and not a stringing defect. However, if you believe there was an issue with the job itself, reach out and we'll look into it. Your satisfaction is important to me."
+  },
+  {
+    question: "Are you a certified stringer?",
+    answer: "Yes — I hold a Tennis SA Stringing Certification, so you can trust your racquet is in experienced, trained hands."
+  }
+];
 
 const services = [
   {
@@ -42,6 +85,8 @@ const steps = [
 ];
 
 export default function LandingPage() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
   return (
     <div className="min-h-screen">
       {/* Navigation */}
@@ -55,16 +100,13 @@ export default function LandingPage() {
             <a href="https://wa.link/4wv5w0" target="_blank" rel="noopener noreferrer" className="hover:text-[#C8F135] transition-colors">Whatsapp Me</a>
           </div>
           <div className="flex items-center gap-4">
-            <span className="hidden md:inline text-white text-sm font-medium">
-              +61 0450 700 794 or
-            </span>
             <a 
               href="https://wa.link/4wv5w0" 
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#C8F135] text-black px-6 py-2 rounded-full text-sm font-bold hover:scale-105 transition-transform"
             >
-              WHATSAPP ME
+              Whatsapp Me
             </a>
           </div>
         </div>
@@ -107,12 +149,20 @@ export default function LandingPage() {
             <p className="text-lg text-white/60 max-w-md mb-10 leading-relaxed">
               Restring your racket with an Adelaide&apos;s local tennis restringing specialist. Fill up the form and receive an expert string advice included — no extra charge.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <a href="#booking-form" className="bg-[#C8F135] text-black px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:bg-[#b8dd30] transition-all">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
+              <a 
+                href="#booking-form" 
+                className="bg-[#C8F135] text-black px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:bg-[#b8dd30] transition-all"
+              >
                 Get Restrung — Fill the Form <ArrowRight size={20} />
               </a>
-              <a href="#services" className="border border-white/10 text-white px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:bg-white/5 transition-all">
-                See Strings & Pricing
+              <a 
+                href="https://wa.link/4wv5w0" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border border-white/10 text-white px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:bg-white/5 transition-all"
+              >
+                Whatsapp Me
               </a>
             </div>
           </motion.div>
@@ -294,6 +344,62 @@ export default function LandingPage() {
               allowFullScreen 
               className="w-full"
             />
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-32 border-t border-white/5">
+        <div className="max-w-3xl mx-auto px-6">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter font-display mb-16 uppercase text-center">FAQ</h2>
+          <div className="space-y-4">
+            {faqs.map((faq, i) => (
+              <div 
+                key={i} 
+                className="border border-white/10 rounded-2xl overflow-hidden glass transition-colors hover:border-white/20"
+              >
+                <button 
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  className="w-full px-8 py-6 flex items-center justify-between text-left"
+                >
+                  <span className="text-lg font-bold font-display uppercase tracking-tight">{faq.question}</span>
+                  {openFaq === i ? (
+                    <Minus size={20} className="text-[#C8F135] flex-shrink-0" />
+                  ) : (
+                    <Plus size={20} className="text-[#C8F135] flex-shrink-0" />
+                  )}
+                </button>
+                <AnimatePresence>
+                  {openFaq === i && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    >
+                      <div className="px-8 pb-8 text-white/60 leading-relaxed">
+                        {faq.answer.includes('WhatsApp') ? (
+                          <span>
+                            {faq.answer.split('WhatsApp')[0]}
+                            <a 
+                              href="https://wa.link/4wv5w0" 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="text-[#C8F135] hover:underline"
+                            >
+                              WhatsApp
+                            </a>
+                            {faq.answer.split('WhatsApp')[1]}
+                          </span>
+                        ) : (
+                          faq.answer
+                        )}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ))}
           </div>
         </div>
       </section>
